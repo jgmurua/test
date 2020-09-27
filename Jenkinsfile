@@ -7,9 +7,9 @@ pipeline {
       }
     }
 
-    stage('') {
+    stage('hola') {
       steps {
-        sh 'hostname; echo "h22"'
+        sh ' echo "h22"'
         mail(subject: 'hola', body: 'hola', to: 'jgmurua@gmail.com', from: 'jgmurua@gmail.com')
       }
     }
