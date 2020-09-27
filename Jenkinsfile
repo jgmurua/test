@@ -9,8 +9,7 @@ pipeline {
 
     stage('hola') {
       steps {
-        sh ' echo "h22"'
-        mail(subject: 'hola', body: 'hola', to: 'jgmurua@gmail.com', from: 'jgmurua@gmail.com')
+        mail(subject: 'hola', body: 'hola', to: 'jgmurua@gmail.com')
       }
     }
 
