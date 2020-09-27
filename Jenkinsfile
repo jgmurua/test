@@ -7,49 +7,10 @@ pipeline {
       }
     }
 
-    stage('segundo') {
-      parallel {
-        stage('segundo') {
-          steps {
-            echo 'bueno'
-          }
-        }
-
-        stage('error') {
-          steps {
-            script {
-              stages{
-                stage ('Test') {
-                  steps{
-                    script {
-                      if ( params.failTest ) {
-                        sh ( "echo 'fail'")
-                      }
-                      else {
-                        sh ( "echo 'success'")
-                      }
-                    }
-                  }
-                }
-                stage ('Build') {
-                  steps{
-                    sh ( "echo 'ok'")
-                    sh ("docker ps -a -s")
-                  }
-                }
-              }
-              post{
-                cleanup{
-                  println "Clearing workspace"
-                  deleteDir()
-                }
-              }
-
-            }
-
-          }
-        }
-
+    stage('') {
+      steps {
+        sh 'hostname; echo "h22"'
+        mail(subject: 'hola', body: 'hola', to: 'jgmurua@gmail.com', from: 'jgmurua@gmail.com')
       }
     }
 
