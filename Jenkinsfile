@@ -8,8 +8,11 @@ pipeline {
     }
 
     stage('hola') {
+      environment {
+        VARX = 'hola como va'
+      }
       steps {
-        mail(subject: 'hola', body: 'hola', to: 'jgmurua@gmail.com')
+        sh 'echo $VARX'
       }
     }
 
