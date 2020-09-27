@@ -1,18 +1,29 @@
 pipeline {
   agent any
   stages {
-    stage('inicio') {
-      steps {
-        readTrusted 'jenkinsRead/Jenkinsfile'
-      }
-    }
-
     stage('hola') {
-      environment {
-        VARX = 'hola como va'
-      }
-      steps {
-        sh 'echo $VARX'
+      parallel {
+        stage('hola') {
+          environment {
+            VARX = 'hola como va'
+          }
+          steps {
+            sh 'echo $VARX'
+          }
+        }
+
+        stage('docker') {
+          steps {
+            script {
+              // This step should not normally be used in your script. Consult the inline help for details.
+              withDockerContainer('hello-world:latest') {
+                // some block
+              }
+            }
+
+          }
+        }
+
       }
     }
 
