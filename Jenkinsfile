@@ -13,6 +13,7 @@ pipeline {
         }
 
         stage('docker') {
+          agent docker
           steps {
             script {
               // This step should not normally be used in your script. Consult the inline help for details.
