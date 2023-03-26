@@ -1,5 +1,5 @@
 #!/bin/bash
-
+containerHash=$(docker run --privileged --rm -d -p 25:25 namshi/smtp)
 
 
 MyHost="$(hostname)"
@@ -97,3 +97,6 @@ echo "$myfile" >&3
 echo "--sep--" >&3
 
 echo "." >&3 ; checkStatus
+
+sleep 10
+docker stop $containerHash
