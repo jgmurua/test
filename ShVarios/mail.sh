@@ -4,7 +4,9 @@
 
 MyHost="$(hostname)"
 
-MailHost="localhost"
+dockerIp=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}'  $containerHash)
+MailHost=$dockerIp
+
 
 MailPort=25
 
